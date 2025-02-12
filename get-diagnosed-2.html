@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HealthScan - Get Diagnosed</title>
+    <style>
+      :root {
+        --primary: #ff6b6b;
+        --secondary: #ffc1c1;
+        --accent: #ff1744;
+        --background: #fff1f1;
+        --text: #4a4a4a;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, var(--primary), #ffffff);
+        background-attachment: fixed;
+        margin: 0;
+        padding: 0;
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      header {
+        background-color: var(--primary);
+        color: white;
+        padding: 1rem 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .header-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        text-align: center;
+      }
+
+      .logo {
+        font-size: 2rem;
+        font-weight: bold;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav {
+        display: flex;
+        gap: 10px;
+        padding-top: 1%;
+        padding-left: 28%;
+        margin-top: 0;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-size: larger;
+      }
+
+      nav a:hover {
+        background-color: var(--accent);
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 40px auto;
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .disclaimer {
+        background-color: var(--secondary);
+        padding: 10px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        font-size: 0.9rem;
+      }
+
+      .input-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-top: 20px;
+      }
+
+      .input-box {
+        text-align: center;
+      }
+
+      #symptoms {
+        width: 100%;
+        font-size: 1.2rem;
+        padding: 15px;
+        border: 1px solid var(--secondary);
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: border-color 0.3s, box-shadow 0.3s;
+      }
+
+      #symptoms:focus {
+        border-color: var(--accent);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        outline: none;
+      }
+
+      button {
+        background-color: var(--primary);
+        color: white;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      button:hover {
+        background-color: var(--accent);
+        transform: translateY(-2px);
+      }
+
+      button:active {
+        background-color: var(--primary);
+        transform: translateY(0);
+      }
+
+      .symptoms-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 15px 0;
+      }
+
+      .symptom-tag {
+        background: var(--background);
+        padding: 8px 16px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.2s;
+        border: 1px solid var(--secondary);
+        font-size: 0.9rem;
+      }
+
+      .symptom-tag:hover {
+        background: var(--secondary);
+        transform: translateY(-2px);
+      }
+
+      .symptoms-section {
+        margin-bottom: 20px;
+      }
+
+      .symptoms-title {
+        font-size: 0.9rem;
+        color: var(--text);
+        margin: 10px 0;
+        font-weight: 500;
+      }
+
+      .assessment-box {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        border: 2px dashed var(--secondary);
+      }
+
+      .pain-scale {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .pain-level {
+        display: flex;
+        align-items: center;
+        padding: 12px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s;
+        border: 1px solid var(--secondary);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .pain-level:hover {
+        background-color: var(--secondary);
+        transform: translateX(5px);
+      }
+
+      .pain-level.selected {
+        background-color: var(--primary);
+        color: white;
+        border-color: var(--accent);
+      }
+
+      .pain-level.selected::before {
+        content: "✓";
+        position: absolute;
+        right: 12px;
+        font-weight: bold;
+      }
+
+      .pain-emoji {
+        font-size: 1.4rem;
+        margin-right: 15px;
+        width: 24px;
+      }
+
+      .pain-description {
+        flex-grow: 1;
+        font-weight: 500;
+      }
+
+      .duration-slider {
+        width: 100%;
+        margin: 20px 0;
+      }
+
+      .file-upload {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        border: 2px dashed var(--secondary);
+      }
+
+      .slider-container {
+        position: relative;
+        padding: 20px 0;
+      }
+
+      .slider-track {
+        width: 100%;
+        height: 4px;
+        background: var(--secondary);
+        position: relative;
+        border-radius: 2px;
+      }
+
+      .slider-marks {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        position: relative;
+      }
+
+      .slider-mark {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        position: relative;
+        width: 25%;
+        transition: all 0.3s;
+      }
+
+      .slider-mark::before {
+        content: "";
+        width: 12px;
+        height: 12px;
+        background: white;
+        border: 2px solid var(--secondary);
+        border-radius: 50%;
+        margin-bottom: 8px;
+        transition: all 0.3s;
+      }
+
+      .slider-mark.active::before {
+        background: var(--primary);
+        border-color: var(--primary);
+        transform: scale(1.2);
+      }
+
+      .slider-mark:hover::before {
+        border-color: var(--primary);
+      }
+
+      .slider-label {
+        font-size: 0.9rem;
+        color: var(--text);
+        text-align: center;
+        transition: all 0.3s;
+      }
+
+      .slider-mark.active .slider-label {
+        color: var(--primary);
+        font-weight: 500;
+      }
+
+      /* Rest of the previous styles remain unchanged */
+    </style>
+  </head>
+  <body>
+    <!-- Previous header and container start remain the same -->
+    <header>
+      <div class="header-content">
+        <h1 class="logo">HealthScan</h1>
+        <nav>
+          <a href="home1.html">Home</a>
+          <a href="#">About Us</a>
+          <a href="learn-how.html">Learn How</a>
+          <a href="get-diagnosed-2.html">Get Diagnosed</a>
+          <a href="get-help.html">Help</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="disclaimer">
+        <strong>Important:</strong> This tool is for informational purposes only
+        and should not replace professional medical advice. Always consult with
+        a healthcare provider for proper diagnosis and treatment.
+      </div>
+      <div class="input-container">
+        <div class="input-box">
+          <input
+            type="text"
+            id="symptoms"
+            placeholder="Type your symptoms here..."
+          />
+
+          <div class="symptoms-section">
+            <div class="symptoms-title">Common Symptoms (click to add):</div>
+            <div class="symptoms-list">
+              <div class="symptom-tag" onclick="addSymptom('Fever')">Fever</div>
+              <div class="symptom-tag" onclick="addSymptom('Headache')">
+                Headache
+              </div>
+              <div class="symptom-tag" onclick="addSymptom('Nausea')">
+                Nausea
+              </div>
+              <div class="symptom-tag" onclick="addSymptom('Runny Nose')">
+                Runny Nose
+              </div>
+              <div class="symptom-tag" onclick="addSymptom('Cough')">Cough</div>
+              <div class="symptom-tag" onclick="addSymptom('Fatigue')">
+                Fatigue
+              </div>
+              <div
+                class="symptom-tag"
+                onclick="addSymptom('Shortness of Breath')"
+              >
+                Shortness of Breath
+              </div>
+              <div class="symptom-tag" onclick="addSymptom('Sore Throat')">
+                Sore Throat
+              </div>
+              <div class="symptom-tag" onclick="addSymptom('Muscle Pain')">
+                Muscle Pain
+              </div>
+              <div class="symptom-tag" onclick="addSymptom('Dizziness')">
+                Dizziness
+              </div>
+            </div>
+          </div>
+
+          <div class="symptom-duration">
+            <h3>Duration of Symptoms</h3>
+            <div class="slider-container">
+              <div class="slider-track"></div>
+              <div class="slider-marks">
+                <div class="slider-mark active" onclick="selectDuration(0)">
+                  <span class="slider-label">Today</span>
+                </div>
+                <div class="slider-mark" onclick="selectDuration(1)">
+                  <span class="slider-label">Few Days</span>
+                </div>
+                <div class="slider-mark" onclick="selectDuration(2)">
+                  <span class="slider-label">1-2 Weeks</span>
+                </div>
+                <div class="slider-mark" onclick="selectDuration(3)">
+                  <span class="slider-label">Month+</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="file-upload">
+            <label for="imageUpload">Click to upload an image (Optional)</label
+            ><br /><br />
+            <input
+              type="file"
+              id="imageUpload"
+              accept="image/*"
+              onchange="previewImage()"
+            />
+            <div class="preview-container" id="imagePreview"></div>
+          </div>
+        </div>
+
+        <div class="assessment-box">
+          <h3>Pain Level</h3>
+          <div class="pain-scale">
+            <div class="pain-level" onclick="selectPain(this)">
+              <span class="pain-emoji">😊</span>
+              <span class="pain-description">No Pain (0)</span>
+            </div>
+            <div class="pain-level" onclick="selectPain(this)">
+              <span class="pain-emoji">🙂</span>
+              <span class="pain-description">Mild (2)</span>
+            </div>
+            <div class="pain-level" onclick="selectPain(this)">
+              <span class="pain-emoji">😐</span>
+              <span class="pain-description">Moderate (4)</span>
+            </div>
+            <div class="pain-level" onclick="selectPain(this)">
+              <span class="pain-emoji">😟</span>
+              <span class="pain-description">Severe (6)</span>
+            </div>
+            <div class="pain-level" onclick="selectPain(this)">
+              <span class="pain-emoji">😣</span>
+              <span class="pain-description">Very Severe (8)</span>
+            </div>
+            <div class="pain-level" onclick="selectPain(this)">
+              <span class="pain-emoji">😫</span>
+              <span class="pain-description">Worst (10)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button onclick="submitForm()">Get Assessment</button>
+    </div>
+
+    <script>
+      function previewImage() {
+        const file = document.getElementById("imageUpload").files[0];
+        const previewContainer = document.getElementById("imagePreview");
+        previewContainer.innerHTML = "";
+        if (file) {
+          const img = document.createElement("img");
+          img.src = URL.createObjectURL(file);
+          previewContainer.appendChild(img);
+        }
+      }
+      function selectPain(element) {
+        document
+          .querySelectorAll(".pain-level")
+          .forEach((el) => el.classList.remove("selected"));
+        element.classList.add("selected");
+      }
+
+      function selectDuration(index) {
+        document.querySelectorAll(".slider-mark").forEach((el, i) => {
+          if (i === index) {
+            el.classList.add("active");
+          } else {
+            el.classList.remove("active");
+          }
+        });
+      }
+      function addSymptom(symptom) {
+        let inputField = document.getElementById("symptoms");
+        if (inputField.value) {
+          inputField.value += ", " + symptom;
+        } else {
+          inputField.value = symptom;
+        }
+      }
+
+      function submitForm() {
+        let symptoms = document.getElementById("symptoms").value;
+        if (symptoms.trim() === "") {
+          alert("Please enter your symptoms before submitting.");
+          return;
+        }
+        document.querySelector(".container").classList.add("fade-out");
+        setTimeout(() => {
+          window.location.href = "diagnosis_results.html";
+        }, 500);
+      }
+    </script>
+  </body>
+</html>
