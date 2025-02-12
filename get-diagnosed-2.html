@@ -23,46 +23,60 @@ body {
     color: var(--text);
     line-height: 1.6;
 }
+        /* Header */
+        header {
+            background-color: var(--primary);
+            width: 100%;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            top: 0;
+            z-index: 1000;
+        }
 
-header {
-    background-color: var(--primary);
-    color: white;
-    padding: 1rem 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+        .header-content {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-.header-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    text-align: center;
-}
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+        }
 
-.logo {
-    font-size: 2rem;
-    font-weight: bold;
-    margin: 0;
-    padding: 0;
-}
+        nav {
+            display: flex;
+            gap: 20px;
+        }
 
-nav {
-    display: flex;
-    gap: 10px;
-    padding-top: 1%;
-    padding-left: 28%;
-    margin-top: 0;
-}
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 16px;
+            transition: all 0.3s;
+            position: relative;
+        }
 
-nav a {
-    text-decoration: none;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 5px;
-}
+        nav a::after {
+            content: '';
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: white;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
 
-nav a:hover {
-    background-color: var(--accent);
-}
+        nav a:hover::after {
+            width: 70%;
+        }
 
 .container {
     max-width: 800px;
