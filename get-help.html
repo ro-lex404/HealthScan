@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* Color Theme */
+        :root {
+            --primary: #FF6B6B;
+            --secondary: #FFC1C1;
+            --accent: #FF1744;
+            --background: #ecd9d9;
+            --text: #4A4A4A;
+        }
+
+        /* Reset & Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--background);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header */
+        header {
+            background-color: transparent;
+            position: absolute;
+            width: 100%;
+            z-index: 10;
+            padding: 1rem 0;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 16px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: white;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        nav a:hover::after {
+            width: 70%;
+        }
+
+        /* Main Content */
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        /* FAQ Section */
+        .faqs {
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .faq {
+            margin-bottom: 10px;
+        }
+
+        .faq-question {
+            background-color: var(--secondary);
+            color: var(--text);
+            border: none;
+            padding: 10px;
+            width: 100%;
+            text-align: left;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 10px;
+            background-color: white;
+            border-left: 4px solid var(--primary);
+            margin-top: 5px;
+            border-radius: 10px;
+        }
+
+        /* Icon Styling */
+        .faq-answer .icon {
+            display: none;
+            font-size: 40px;
+            margin-top: 10px;
+            transition: transform 0.5s ease;
+        }
+
+        /* When the FAQ is open, show and animate the icon */
+        .faq-answer.active .icon {
+            display: block;
+            transform: scale(1.5);
+            animation: bounce 1s infinite;
+        }
+
+        /* Animation for icon (bounce effect) */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Support Sections */
+        .contact, .troubleshooting, .privacy, .disclaimer {
+            background-color: white;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+        /* Links */
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        @media (max-width: 768px) {
+        nav {
+                flex-wrap: wrap;
+                justify-content: center;
+        }}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1 class="logo">HealthScan</h1>
+            <nav>
+                <a href="home.html">Home</a>
+                <a href="#">About Us</a>
+                <a href="#">Learn How</a>
+                <a href="get-diagnosed-2.html">Get Diagnosed</a>
+                <a href="get-help.html">Help</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <h1>Help</h1>
+        <section class="faqs">
+            <h2>FAQs</h2>
+            <div class="faq">
+                <button class="faq-question">
+                    How does this website work?
+                </button>
+                <div class="faq-answer">
+                    <p>Enter your symptoms, optionally upload images, and receive AI-assisted insights on possible conditions.</p>
+                    <div class="icon">
+                        <i class="fas fa-laptop-medical"></i> <!-- Example icon -->
+                    </div>
+                </div>
+            </div>
+            <div class="faq">
+                <button class="faq-question">
+                    Is my data secure?
+                </button>
+                <div class="faq-answer">
+                    <p>Yes, we prioritize your privacy. Your data is encrypted and not shared with third parties.</p>
+                    <div class="icon">
+                        <i class="fas fa-lock"></i> <!-- Security icon -->
+                    </div>
+                </div>
+            </div>
+            <div class="faq">
+                <button class="faq-question">
+                    Can this tool replace a doctor?
+                </button>
+                <div class="faq-answer">
+                    <p>No, this tool provides informational guidance but does not replace professional medical advice.</p>
+                    <div class="icon">
+                        <i class="fas fa-user-md"></i> <!-- Doctor icon -->
+                    </div>
+                </div>
+            </div>
+            <div class="faq">
+                <button class="faq-question">
+                    Why didn’t I get an accurate result?
+                </button>
+                <div class="faq-answer">
+                    <p>Our AI relies on the information provided. For a precise diagnosis, consult a healthcare professional.</p>
+                    <div class="icon">
+                        <i class="fas fa-question-circle"></i> <!-- Question icon -->
+                    </div>
+                </div>
+            </div>
+            <div class="faq">
+                <button class="faq-question">
+                    How do I contact support?
+                </button>
+                <div class="faq-answer">
+                    <p>You can reach us through our Contact Support section or email <a href="mailto:support@example.com">support@example.com</a>.</p>
+                    <div class="icon">
+                        <i class="fas fa-headset"></i> <!-- Support icon -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact">
+            <h2>Contact Support</h2>
+            <p>If you need assistance, email us at <a href="mailto:support@example.com">support@example.com</a>.</p>
+        </section>
+
+        <section class="troubleshooting">
+            <h2>Troubleshooting</h2>
+            <p>Issues with uploading images or entering symptoms? Try refreshing the page or clearing your browser cache.</p>
+        </section>
+
+        <section class="privacy">
+            <h2>Privacy & Security</h2>
+            <p>Your data is encrypted and never shared with third parties.</p>
+        </section>
+
+        <section class="disclaimer">
+            <h2>Medical Disclaimer</h2>
+            <p>This tool provides informational guidance and is not a substitute for professional medical advice.</p>
+        </section>
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const questions = document.querySelectorAll(".faq-question");
+        
+            questions.forEach((question) => {
+                question.addEventListener("click", function () {
+                    const answer = this.nextElementSibling;
+                    const icon = answer.querySelector(".icon");
+        
+                    // Toggle answer display
+                    answer.style.display = answer.style.display === "block" ? "none" : "block";
+                    
+                    // Toggle icon animation when the answer is displayed
+                    if (answer.style.display === "block") {
+                        answer.classList.add("active");
+                    } else {
+                        answer.classList.remove("active");
+                    }
+                });
+            });
+        });
+    </script>    
+</body>
+</html>
