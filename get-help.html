@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>HealthScan - Help</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
-        /* Color Theme */
+        /* New Color Theme */
         :root {
-            --primary: #FF6B6B;
+            --primary: #ff5c5c;
             --secondary: #FFC1C1;
             --accent: #FF1744;
             --background: #ecd9d9;
@@ -22,19 +22,26 @@
             color: var(--text);
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
         }
 
         /* Header */
         header {
-            background-color: transparent;
-            position: absolute;
+            background-color: var(--primary);
             width: 100%;
-            z-index: 10;
             padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            z-index: 1000;
         }
 
         .header-content {
             max-width: 1200px;
+            width: 100%;
             margin: 0 auto;
             padding: 0 20px;
             display: flex;
@@ -43,8 +50,9 @@
         }
 
         .logo {
-            font-size: 24px;
+            font-size: 2rem;
             font-weight: bold;
+            color: white;
         }
 
         nav {
@@ -81,18 +89,25 @@
         main {
             padding: 20px;
             max-width: 800px;
-            margin: auto;
+            width: 100%;
+            margin-top: 80px; /* Adjust for fixed header */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         h1, h2 {
             text-align: center;
+            color: var(--primary);
         }
 
         /* FAQ Section */
         .faqs {
             background-color: white;
-            padding: 15px;
+            padding: 20px;
             border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 100%;
         }
 
         .faq {
@@ -103,17 +118,22 @@
             background-color: var(--secondary);
             color: var(--text);
             border: none;
-            padding: 10px;
+            padding: 15px;
             width: 100%;
             text-align: left;
             border-radius: 10px;
             cursor: pointer;
             font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color:  #e4aaaa;; 
         }
 
         .faq-answer {
             display: none;
-            padding: 10px;
+            padding: 15px;
             background-color: white;
             border-left: 4px solid var(--primary);
             margin-top: 5px;
@@ -151,21 +171,35 @@
         /* Support Sections */
         .contact, .troubleshooting, .privacy, .disclaimer {
             background-color: white;
-            padding: 15px;
+            padding: 20px;
             margin-top: 20px;
             border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 100%;
         }
 
         /* Links */
         a {
             color: var(--accent);
             text-decoration: none;
+            transition: color 0.3s ease;
         }
+
         @media (max-width: 768px) {
-        nav {
+            nav {
                 flex-wrap: wrap;
                 justify-content: center;
-        }}
+            }
+
+            .header-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .logo {
+                margin-bottom: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -173,9 +207,9 @@
         <div class="header-content">
             <h1 class="logo">HealthScan</h1>
             <nav>
-                <a href="home.html">Home</a>
+                <a href="home1.html">Home</a>
                 <a href="#">About Us</a>
-                <a href="#">Learn How</a>
+                <a href="learn-how.html">Learn How</a>
                 <a href="get-diagnosed-2.html">Get Diagnosed</a>
                 <a href="get-help.html">Help</a>
             </nav>
