@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HealthScan - Get Diagnosed</title>
     <style>
-      :root {
-        --primary: #ff6b6b;
-        --secondary: #ffc1c1;
-        --accent: #ff1744;
-        --background: #fff1f1;
-        --text: #4a4a4a;
-      }
+        :root {
+            --primary: #4C5374;       /* Bright Blue */
+            --secondary: #F1E58A;     /* Light Blue */
+            --accent: #71647C;        /* Soft Red */
+            --background: #D8E3E7;    /* Very Light Blue */
+            --text: #333333;          /* Dark Gray */
+        }
 
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -292,79 +291,72 @@
         color: var(--primary);
         font-weight: 500;
       }
-        :root {
-    --primary: #FF6B6B;
-    --secondary: #FFC1C1;
-    --accent: #FF1744;
-    --background: #FFF1F1;
-    --text: #4A4A4A;
-}
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--background);
-    margin: 0;
-    padding: 0;
-    color: var(--text);
-    line-height: 1.6;
-}
+      body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          background-color: var(--background);
+          margin: 0;
+          padding: 0;
+          color: var(--text);
+          line-height: 1.6;
+      }
         /* Header */
 
-        header {
-            background-color: var(--primary);
-            width: 100%;
-            padding: 1rem 0;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            top: 0;
-            margin-bottom: 0px;
-            z-index: 1000;
-        }
+      header {
+        background-color: var(--primary);
+        width: 100%;
+        padding: 1rem 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        top: 0;
+        margin-bottom: 0px;
+        z-index: 1000;
+    }
 
-        .header-content {
-            max-width: 1200px;
-            width: 100%;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    .header-content {
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 
-        .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            color: white;
-        }
+    .logo {
+        font-size: 2rem;
+        font-weight: bold;
+        color: white;
+    }
 
-        nav {
-            display: flex;
-            gap: 20px;
-        }
+    nav {
+        display: flex;
+        gap: 20px;
+    }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 8px 16px;
-            transition: all 0.3s;
-            position: relative;
-        }
+    nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        padding: 8px 16px;
+        transition: all 0.3s;
+        position: relative;
+    }
 
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 50%;
-            background-color: white;
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
+    nav a::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 50%;
+        background-color: white;
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+    }
 
-        nav a:hover::after {
-            width: 70%;
-        }
+    nav a:hover::after {
+        width: 70%;
+    }
 
 .container {
     max-width: 800px;
