@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthScan - Home</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --primary: #ff5c5c;
+            --secondary: #FFC1C1;
+            --accent: #FF1744;
+            --background: #ecd9d9;
+            --text: #4A4A4A;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background);
+            margin: 0;
+            padding: 0;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: transparent;
+            position: absolute;
+            width: 100%;
+            z-index: 10;
+            padding: 1rem 0;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+            color: white;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 16px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: white;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        nav a:hover::after {
+            width: 70%;
+        }
+
+        .hero-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero-text {
+            max-width: 600px;
+            text-align: center;
+            animation: slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-button:hover {
+            background-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: -100px auto 0;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .feature-card p {
+            margin: 0;
+            color: var(--text);
+        }
+
+        .info-section {
+            background: white;
+            padding: 100px 10px;
+            margin-top: 100px;
+            text-align: center;
+        }
+
+        .info-content {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .info-content h2 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .info-content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .disclaimer {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: var(--secondary);
+            border-radius: 10px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('medical.jpg') center/cover;
+            color: white;
+        }
+
+        .feedback-section {
+            text-align: center;
+            background: white;
+            padding: 50px 20px;
+            margin-top: 40px;
+        }
+
+        .feedback-section h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .carousel {
+            display: flex;
+            overflow: hidden;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .review-group {
+            display: flex;
+            gap: 20px;
+            width: 100%;
+            flex-shrink: 0;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .review {
+            flex: 1;
+            background: var(--secondary);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 200px;
+            transform: scale(0.98);
+            transition: transform 0.3s ease;
+        }
+
+        .review:hover {
+            transform: scale(1);
+        }
+
+        .review p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+
+        .stars {
+            color: gold;
+            font-size: 1.3rem;
+            margin: 10px 0;
+        }
+
+        .review h4 {
+            margin: 0;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: background-color 0.3s ease;
+            z-index: 2;
+        }
+
+        .carousel-button:hover {
+            background: var(--accent);
+        }
+
+        .carousel-button.prev {
+            left: -10px;
+        }
+
+        .carousel-button.next {
+            right: -10px;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--secondary);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--primary);
+        }
+
+        .login-side {
+            height: auto;
+            width: 350px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            margin-left: 50px;
+            animation: slideIn 1s ease-out;
+        }
+
+        .login-side-part {
+            color: var(--text);
+            width: 100%;
+        }
+
+        .login-side-part-content {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .login-side-part-content h3 {
+            font-size: 24px;
+            color: var(--primary);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .input-group label {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .login-button {
+            background-color: var(--primary);
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-align: center;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+
+        .login-button:hover {
+            background-color: var(--accent);
+        }
+
+        .forgot-password {
+            text-align: center;
+            font-size: 12px;
+            color: var(--text);
+            text-decoration: none;
+            margin-top: 10px;
+        }
+
+        .forgot-password:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 1024px) {
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+                margin-top: -50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+                margin-top: 40px;
+            }
+
+            .info-section {
+                padding: 60px 20px;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .login-side {
+                margin-left: 0;
+                width: 100%;
+                max-width: 350px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav a {
+                font-size: 0.9rem;
+                padding: 6px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1 class="logo">HealthScan</h1>
+            <nav>
+                <a href="index.ejs">Home</a>
+                <a href="about-us.ejs">About Us</a>
+                <a href="learn-how.ejs">Learn How</a>
+                <a href="get-diagnosed-2.ejs">Get Diagnosed</a>
+                <a href="get-help.ejs">Help</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Your Advanced Health Assistant</h1>
+                <p>Experience the future of preliminary health assessments with our intelligent symptom analysis platform. Quick, accurate, and completely confidential.</p>
+                <a href="get-diagnosed-2.ejs" class="cta-button">Check Your Symptoms</a>
+            </div>
+            <div class="login-side">
+                <div class="login-side-part">
+                    <form action="" onsubmit="return validateLogin(event)">
+                        <div class="login-side-part-content">
+                            <h3>Login</h3>
+                            <div class="input-group">
+                                <label for="username">Username</label>
+                                <input type="text" id="username" name="username" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" name="password" required>
+                            </div>
+                            <button type="submit" class="login-button">Sign In</button>
+                            <a href="#" class="forgot-password">Forgot your password?</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="features">
+        <div class="feature-card">
+            <h3>Smart Analysis</h3>
+            <p>Our advanced algorithm provides detailed preliminary assessments based on comprehensive medical knowledge and modern diagnostic approaches.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Instant Results</h3>
+            <p>Receive comprehensive preliminary assessments and actionable recommendations within minutes of completing your symptom check.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Secure Platform</h3>
+            <p>Your health information is protected with enterprise-grade security and encryption, ensuring complete privacy and confidentiality.</p>
+        </div>
+    </div>
+    <div class="info-section">
+        <div class="info-content">
+            <h2>How It Works</h2>
+            <p>Simply describe your symptoms, provide details about their severity and duration, and receive an instant preliminary assessment. Our platform helps you make informed decisions about your health and medical care needs.</p>
+            <img src="flowchart.png" alt="flowchart image">
+        </div>
+    </div>
+
+    <div class="feedback-section">
+        <h2>What Our Users Say</h2>
+        <div class="carousel-container">
+            <button class="carousel-button prev">&lt;</button>
+            <button class="carousel-button next">&gt;</button>
+
+            <div class="carousel">
+                <div class="review-group">
+                    <div class="review">
+                        <p>"HealthScan helped me understand my symptoms and take action quickly. Highly recommended!"</p>
+                        <div class="stars">★★★★★</div>
+                        <h4>- Alex Johnson</h4>
+                    </div>
+                    <div class="review">
+                        <p>"A lifesaver! The diagnosis was spot on, and it gave me the confidence to see a doctor."</p>
+                        <div class="stars">★★★★☆</div>
+                        <h4>- Sarah Lee</h4>
+                    </div>
+                    <div class="review">
+                        <p>"The interface is simple and easy to use. I got my results in seconds!"</p>
+                        <div class="stars">★★★★★</div>
+                        <h4>- Michael Smith</h4>
+                    </div>
+                </div>
+                
+                <div class="review-group">
+                    <div class="review">
+                        <p>"Great platform, it gave me accurate preliminary advice!"</p>
+                        <div class="stars">★★★★☆</div>
+                        <h4>- Rachel Green</h4>
+                    </div>
+                    <div class="review">
+                        <p>"Very user-friendly and informative. Will recommend to friends!"</p>
+                        <div class="stars">★★★★★</div>
+                        <h4>- Daniel Craig</h4>
+                    </div>
+                    <div class="review">
+                        <p>"HealthScan helped me understand potential health issues early!"</p>
+                        <div class="stars">★★★★★</div>
+                        <h4>- Priya Sharma</h4>
+                    </div>
+                </div>
+                
+                <div class="review-group">
+                    <div class="review">
+                        <p>"I appreciate how simple and effective this tool is."</p>
+                        <div class="stars">★★★★☆</div>
+                        <h4>- Liam Johnson</h4>
+                    </div>
+                    <div class="review">
+                        <p>"This website gave me the confidence to seek medical advice."</p>
+                        <div class="stars">★★★★★</div>
+                        <h4>- Emily Davis</h4>
+                    </div>
+                    <div class="review">
+                        <p>"Quick, accurate, and very easy to use. A game-changer!"</p>
+                        <div class="stars">★★★★★</div>
+                        <h4>- Mark Wilson</h4>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="carousel-dots">
+                </div>
+            </div>
+        
+            <div class="disclaimer">
+                <strong>Important:</strong> HealthScan is for informational purposes only and should not replace professional medical advice. Always consult with a healthcare provider for proper diagnosis and treatment.
+            </div>
+        
+            <script>
+                        function validateLogin(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Hardcoded credentials
+            const correctUsername = "admin";
+            const correctPassword = "12345";
+
+            // Get input values
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Check credentials
+            if (username === correctUsername && password === correctPassword) {
+                alert("Login successful!");
+                // Redirect or perform further actions
+                window.location.href = "/get-diagnosed-2.ejs"; // Change this to your actual redirect page
+            } else {
+                alert("Invalid username or password. Try again.");
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.querySelector('.carousel');
+            const reviewGroups = document.querySelectorAll('.review-group');
+            const prevButton = document.querySelector('.carousel-button.prev');
+            const nextButton = document.querySelector('.carousel-button.next');
+            const dotsContainer = document.querySelector('.carousel-dots');
+            
+            let currentIndex = 0;
+            const totalGroups = reviewGroups.length;
+            
+            // Create dots
+            for (let i = 0; i < totalGroups; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(i));
+                dotsContainer.appendChild(dot);
+            }
+            
+            function updateCarousel() {
+                // Calculate the translation percentage based on the current index
+                const translation = -currentIndex * 100;
+                // Apply the translation to all review groups
+                reviewGroups.forEach(group => {
+                    group.style.transform = `translateX(${translation}%)`;
+                });
+                
+                // Update dots
+                document.querySelectorAll('.dot').forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            }
+            
+            function goToSlide(index) {
+                currentIndex = index;
+                updateCarousel();
+                resetAutoScroll();
+            }
+            
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % totalGroups;
+                updateCarousel();
+                resetAutoScroll();
+            }
+            
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + totalGroups) % totalGroups;
+                updateCarousel();
+                resetAutoScroll();
+            }
+            
+            // Event listeners for buttons
+            nextButton.addEventListener('click', () => {
+                nextSlide();
+            });
+            
+            prevButton.addEventListener('click', () => {
+                prevSlide();
+            });
+            
+            // Auto-scroll functionality
+            let intervalId;
+            
+            function startAutoScroll() {
+                intervalId = setInterval(nextSlide, 3000);
+            }
+            
+            function resetAutoScroll() {
+                clearInterval(intervalId);
+                startAutoScroll();
+            }
+            
+            // Start auto-scroll
+            startAutoScroll();
+            
+            // Pause auto-scroll when hovering over carousel
+            carousel.addEventListener('mouseenter', () => {
+                clearInterval(intervalId);
+            });
+            
+            carousel.addEventListener('mouseleave', () => {
+                startAutoScroll();
+            });
+            
+            // Initialize the carousel
+            updateCarousel();
+        });
+            </script>
+        </body>
+        </html>
